@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+enum PlayerStates {
+	MOVE,
+	SWORD	
+}
+
+var CurrentState = PlayerStates.MOVE
+
 var speed = 200.0
 var gravity = 20.0
 var jump = 400
@@ -9,7 +16,13 @@ func _ready():
 	$Sword/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
-	Move(delta)
+	
+	match CurrentState:
+		PlayerStates.MOVE:
+			Move(delta)
+		PlayerStates.SWORD:
+			Sword(delta)
+
 	velocity.y += gravity
 	move_and_slide()
 
@@ -39,8 +52,11 @@ func Move(delta):
 		print(pressed)
 	
 	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+		print(velocity.y)
 		Jump()
 	if Input.is_action_just_pressed("ui_jump") and !is_on_floor() && pressed >= 1:
+		print(velocity.y)
+		velocity.y = 0
 		Jump()	
 	if pressed <= 0:
 		velocity.y = velocity.y
@@ -53,10 +69,22 @@ func Move(delta):
 		$Anim.play("Fall")
 		
 	if Input.is_action_just_pressed("ui_sword"):
-		Sword()
+		CurrentState = PlayerStates.SWORD
 
 func Jump():
 	velocity.y -= jump
 		
-func Sword():
+func Sword(delta):
+	var movement = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	velocity.x = movement
 	$Anim.play("Sword")
+	if (movement != 0):
+		if (movement > 0.0):
+			velocity.x += speed * delta
+			velocity.x = clamp(speed, 100, speed)
+		if (movement < 0.0):
+			velocity.x -= speed * delta
+			velocity.x = clamp(speed, -100, -speed)
+
+func OnStateFinished():
+	CurrentState = PlayerStates.MOVE
