@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq5y0prvhjgko"]
+[gd_scene load_steps=13 format=3 uid="uid://bq5y0prvhjgko"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2qiok"]
 [ext_resource type="Texture2D" uid="uid://dadapg2ngtwcw" path="res://metroidvania assets/Player2.png" id="1_t2we5"]
@@ -84,6 +84,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wwrw7"]
 resource_name = "Sword"
@@ -99,6 +111,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ngqpf"]
@@ -129,6 +153,8 @@ _data = {
 "Walk": SubResource("Animation_ngqpf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57njb"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2qiok")
 
@@ -147,3 +173,11 @@ shape = SubResource("RectangleShape2D_8nlak")
 libraries = {
 "": SubResource("AnimationLibrary_2rtc0")
 }
+
+[node name="Sword" type="Area2D" parent="."]
+position = Vector2(23, 0)
+scale = Vector2(0.902732, 1.9446)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+shape = SubResource("RectangleShape2D_57njb")
+debug_color = Color(0.94902, 0, 0.584314, 0.419608)
