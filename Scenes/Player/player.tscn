@@ -190,6 +190,7 @@ libraries = {
 
 [node name="Sword" type="Area2D" parent="."]
 light_mask = 8
+visibility_layer = 17
 position = Vector2(23, 0)
 scale = Vector2(0.902732, 1.9446)
 
