@@ -150,11 +150,13 @@ target_position = Vector2(0, 14)
 position = Vector2(8, 13)
 target_position = Vector2(10, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_lghg5")
 debug_color = Color(0.901961, 0.160784, 0.658824, 0.419608)
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area" to="." method="_on_area_2d_area_entered"]

@@ -4,15 +4,23 @@ var moving_left = true
 var speed = 15
 var gravity = 30
 var health = 3
+
 func _physics_process(delta):
 	Move()
 	floor_detect()
-func Move():
+func _ready():
 	$Anim.play("Idle")
+
+func Move():
 	if moving_left:
 		velocity.x = speed
 	else:
 		velocity.x = -speed
+	if health <= 0:
+		velocity.x = 0
+		$Anim.play("Dead")
+		await $Anim.animation_finished
+		queue_free()
 	move_and_slide()
 
 func floor_detect():
@@ -25,4 +33,6 @@ func floor_detect():
 
 
 func _on_area_2d_area_entered(area):
-	pass # Replace with function body.
+	if area.name == "Sword":
+		health -= 1
+		print(health)

@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 enum PlayerStates {
 	MOVE,
-	SWORD	
+	SWORD,
+	DEAD
 }
 
 var CurrentState = PlayerStates.MOVE
@@ -11,6 +12,8 @@ var speed = 200.0
 var gravity = 20.0
 var jump = 400
 var pressed = 2
+
+var health = Globals.player_life
 
 func _ready():
 	$Sword/CollisionShape2D.disabled = true
@@ -22,6 +25,8 @@ func _physics_process(delta):
 			Move(delta)
 		PlayerStates.SWORD:
 			Sword(delta)
+		PlayerStates.DEAD:
+			Dead()
 
 	velocity.y += gravity
 	move_and_slide()
@@ -86,5 +91,21 @@ func Sword(delta):
 			velocity.x -= speed * delta
 			velocity.x = clamp(speed, -100, -speed)
 
+func Dead():
+	$Anim.play("Dead")
+	await $Anim.animation_finished
+	get_tree().reload_current_scene()
+	Globals.player_life = 5
+	OnStateFinished()
+	
+
 func OnStateFinished():
 	CurrentState = PlayerStates.MOVE
+
+
+func _on_hitbox_body_entered(body):
+	if body.name == "Enemy":
+		Globals.player_life -= 1
+		print("Reducing player ")
+	if Globals.player_life <= 0:
+		CurrentState = PlayerStates.DEAD

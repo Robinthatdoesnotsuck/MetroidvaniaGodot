@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq5y0prvhjgko"]
+[gd_scene load_steps=14 format=3 uid="uid://bq5y0prvhjgko"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2qiok"]
 [ext_resource type="Texture2D" uid="uid://dadapg2ngtwcw" path="res://metroidvania assets/Player2.png" id="1_t2we5"]
@@ -169,6 +169,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57njb"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsdur"]
+radius = 17.0294
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2qiok")
 
@@ -190,10 +193,18 @@ libraries = {
 
 [node name="Sword" type="Area2D" parent="."]
 light_mask = 8
-visibility_layer = 17
+visibility_layer = 49
 position = Vector2(23, 0)
 scale = Vector2(0.902732, 1.9446)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 shape = SubResource("RectangleShape2D_57njb")
 debug_color = Color(0.94902, 0, 0.584314, 0.419608)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_tsdur")
+debug_color = Color(0.921569, 0.133333, 0.6, 0.419608)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
