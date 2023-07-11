@@ -5,6 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://wy8gf23cescu" path="res://metroidvania assets/Sprites/Interactables/coin.png" id="2_vyx24"]
 [ext_resource type="Texture2D" uid="uid://dr6ljpoawns5r" path="res://metroidvania assets/Sprites/UI/HeartSpriteSheetl.png" id="3_v7ts2"]
 
+[sub_resource type="Animation" id="Animation_lspgt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="Animation" id="Animation_eo1hr"]
 resource_name = "coin"
 length = 1.2
@@ -22,28 +37,15 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7]
 }
 
-[sub_resource type="Animation" id="Animation_lspgt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qmofv"]
 _data = {
 "RESET": SubResource("Animation_lspgt"),
 "coin": SubResource("Animation_eo1hr")
 }
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_y5e2y")
 
 [node name="PlayerLife" type="Sprite2D" parent="."]
@@ -52,7 +54,7 @@ texture = ExtResource("1_1dggg")
 centered = false
 
 [node name="coinLogo" type="Sprite2D" parent="."]
-position = Vector2(41, 26)
+position = Vector2(41, 34)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_vyx24")
 hframes = 8

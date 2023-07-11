@@ -1,7 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bq5y0prvhjgko"]
+[gd_scene load_steps=16 format=3 uid="uid://bq5y0prvhjgko"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2qiok"]
 [ext_resource type="Texture2D" uid="uid://dadapg2ngtwcw" path="res://metroidvania assets/Player2.png" id="1_t2we5"]
+[ext_resource type="Shader" path="res://Scenes/Shaders/hurt.gdshader" id="2_3h30i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6luei"]
+shader = ExtResource("2_3h30i")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nlak"]
 size = Vector2(16, 27)
@@ -177,6 +183,7 @@ script = ExtResource("1_2qiok")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_6luei")
 texture = ExtResource("1_t2we5")
 hframes = 5
 vframes = 5

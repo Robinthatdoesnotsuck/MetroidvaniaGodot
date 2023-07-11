@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3unsab33s2if"]
+[gd_scene load_steps=17 format=3 uid="uid://b3unsab33s2if"]
 
 [ext_resource type="PackedScene" uid="uid://bq5y0prvhjgko" path="res://Scenes/Player/player.tscn" id="1_ai0l0"]
+[ext_resource type="PackedScene" uid="uid://c7frm2byjuxib" path="res://Scenes/UI/UI.tscn" id="1_cbkto"]
 [ext_resource type="Texture2D" uid="uid://bhdv38qaa4pje" path="res://metroidvania assets/Sprites/Ground/ground-tileset.png" id="2_3cato"]
 [ext_resource type="PackedScene" uid="uid://bqf7cpyvv6ghg" path="res://Scenes/Enemy/enemy.tscn" id="2_f2pkl"]
 [ext_resource type="PackedScene" uid="uid://8c0705q21h7i" path="res://Scenes/Crate/crate.tscn" id="3_8ie5q"]
@@ -317,6 +318,8 @@ terrain_set_0/terrain_0/color = Color(0.603922, 0.105882, 0.631373, 1)
 sources/0 = SubResource("TileSetAtlasSource_urm6x")
 
 [node name="MainScene" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_cbkto")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)

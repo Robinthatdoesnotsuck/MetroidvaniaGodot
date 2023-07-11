@@ -95,7 +95,7 @@ func Dead():
 	$Anim.play("Dead")
 	await $Anim.animation_finished
 	get_tree().reload_current_scene()
-	Globals.player_life = 5
+	Globals.player_life = 4
 	OnStateFinished()
 	
 
@@ -105,7 +105,13 @@ func OnStateFinished():
 
 func _on_hitbox_body_entered(body):
 	if body.name == "Enemy":
+		flash()
 		Globals.player_life -= 1
 		print("Reducing player ")
 	if Globals.player_life <= 0:
 		CurrentState = PlayerStates.DEAD
+
+func flash():
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 1)
+	await (get_tree().create_timer(0.3)).timeout
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0)

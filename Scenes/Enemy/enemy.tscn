@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqf7cpyvv6ghg"]
+[gd_scene load_steps=11 format=3 uid="uid://bqf7cpyvv6ghg"]
 
 [ext_resource type="Texture2D" uid="uid://cmwb0a44bgx8l" path="res://metroidvania assets/Sprites/Enemies/Enemy2.png" id="1_dq0xw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_sod3s"]
+[ext_resource type="Shader" path="res://Scenes/Shaders/hurt.gdshader" id="2_pd18b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfhk"]
 size = Vector2(13, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xs0s"]
+shader = ExtResource("2_pd18b")
+shader_parameter/flash_color = Color(1, 0.0980392, 0.231373, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_55idn"]
 resource_name = "Dead"
@@ -132,6 +138,7 @@ position = Vector2(-0.5, 12.5)
 shape = SubResource("RectangleShape2D_qpfhk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1xs0s")
 texture = ExtResource("1_dq0xw")
 hframes = 7
 vframes = 2
