@@ -4,6 +4,7 @@ const HEART_ROW_SIZE = 8
 const HEART_OFFSET = 16
 
 func _ready():
+	$CoinText.text = var_to_str(Globals.player_coins)
 	$coinLogo/Anim.play("coin")
 	for i in Globals.player_life:
 		var new_heart = Sprite2D.new()
@@ -13,6 +14,7 @@ func _ready():
 
 
 func _process(delta):
+	$CoinText.text = var_to_str(Globals.player_coins)
 	for heart in $Heart.get_children():
 		var index = heart.get_index()
 		

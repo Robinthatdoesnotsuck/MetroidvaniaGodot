@@ -72,7 +72,8 @@ texture = ExtResource("3_v7ts2")
 hframes = 5
 
 [node name="CoinText" type="Label" parent="."]
-offset_left = 47.0
-offset_top = 15.0
-offset_right = 95.0
-offset_bottom = 38.0
+offset_left = 46.0
+offset_top = 20.5
+offset_right = 94.0
+offset_bottom = 46.5
+vertical_alignment = 1
