@@ -1,9 +1,12 @@
 extends StaticBody2D
 
+func _on_switch_opening_door():
+	$Anim.play("Opening")
+	await $Anim.animation_finished
+	$Anim.play("Opened")
 
-func _ready():
-	pass # Replace with function body.
 
-
-func _process(delta):
-	pass
+func _on_switch_2_opening_door():
+	$Anim.play("Opening")
+	await $Anim.animation_finished
+	$Anim.play("Opened")
