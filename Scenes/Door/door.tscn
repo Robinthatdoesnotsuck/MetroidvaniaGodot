@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqk3db2knpx18"]
+[gd_scene load_steps=10 format=3 uid="uid://bqk3db2knpx18"]
 
 [ext_resource type="Texture2D" uid="uid://bxgihyth7qx21" path="res://metroidvania assets/Sprites/Interactables/Door.png" id="1_ifvtw"]
 [ext_resource type="Script" path="res://Scenes/Door/door.gd" id="1_jjl5h"]
+[ext_resource type="AudioStream" uid="uid://c85rsgt2q4df" path="res://metroidvania assets/Audio/1.wav" id="3_lhlgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5viut"]
 size = Vector2(42, 60)
@@ -144,3 +145,6 @@ autoplay = "Closed"
 libraries = {
 "": SubResource("AnimationLibrary_7b7g3")
 }
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lhlgs")

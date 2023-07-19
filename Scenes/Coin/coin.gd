@@ -14,5 +14,6 @@ func _on_body_entered(body):
 		Globals.player_coins += 1
 		print(Globals.player_coins)
 		$Anim.play("Picked")
+		$Audio.play()
 		await $Anim.animation_finished
 		queue_free()

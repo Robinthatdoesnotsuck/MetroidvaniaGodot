@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvjkcalm8w64n"]
+[gd_scene load_steps=9 format=3 uid="uid://cvjkcalm8w64n"]
 
 [ext_resource type="Texture2D" uid="uid://wy8gf23cescu" path="res://metroidvania assets/Sprites/Interactables/coin.png" id="1_qwdtr"]
 [ext_resource type="Script" path="res://Scenes/Coin/coin.gd" id="1_tt2dx"]
+[ext_resource type="AudioStream" uid="uid://dbfbi65b5krbs" path="res://metroidvania assets/Audio/gold-4.wav" id="3_56lnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkq2b"]
 
@@ -135,5 +136,8 @@ autoplay = "Active"
 libraries = {
 "": SubResource("AnimationLibrary_tb71t")
 }
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_56lnl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -74,7 +74,9 @@ func Move(delta):
 		$Anim.play("Fall")
 		
 	if Input.is_action_just_pressed("ui_sword"):
+		$Audio.play()
 		CurrentState = PlayerStates.SWORD
+		
 
 func Jump():
 	velocity.y -= jump

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bq5y0prvhjgko"]
+[gd_scene load_steps=17 format=3 uid="uid://bq5y0prvhjgko"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_2qiok"]
 [ext_resource type="Texture2D" uid="uid://dadapg2ngtwcw" path="res://metroidvania assets/Player2.png" id="1_t2we5"]
 [ext_resource type="Shader" path="res://Scenes/Shaders/hurt.gdshader" id="2_3h30i"]
+[ext_resource type="AudioStream" uid="uid://714rq0las3ye" path="res://metroidvania assets/Audio/swing3.wav" id="4_g70ma"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6luei"]
 shader = ExtResource("2_3h30i")
@@ -213,5 +214,8 @@ debug_color = Color(0.94902, 0, 0.584314, 0.419608)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_tsdur")
 debug_color = Color(0.921569, 0.133333, 0.6, 0.419608)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_g70ma")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
